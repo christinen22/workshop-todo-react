@@ -29,12 +29,9 @@ function App() {
     setNewTodoTitle('')
   }
 
-    const handleTodoToggle = (todoToToggle: Todo) => {
-      setTodos(
-        todos.filter(todo => todo !== todoToToggle)
-      )
-
-  } 
+   function toggle(status: boolean) {
+    return !status
+   }
 
 
   return (
@@ -69,16 +66,12 @@ function App() {
             {
               todos.map( (todo, index) => (
                 <li key={index}>
-                  {todo.title} -  {todo.status} Done?
+                  {todo.title} - Done?
                   <input
                   type='checkbox'
                   checked={status}
-                  onClick={() => handleTodoToggle}
+                  onChange={ () => setStatus(toggle)}
                   />
-                  <button
-                    className='btn btn-success btn-sm ms-1'
-                    onClick={() => handleTodoToggle(todo)}
-                  > ✔️</button>
                 </li>
               
               ))
